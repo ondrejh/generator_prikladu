@@ -26,15 +26,12 @@ while (pocet<celkem_prikladu)
 	if ((z==1)&&(b>=a))
 		v = 0;
 	end %pri odecitani nesmi byt b>=a
-	if ((z==0)&&((a+b)>20))
+	if ((z==0)&&((a+b)>40))
 		v = 0;
-	end %soucet nesmi byt vic nez 20
-	if ((z==1)&&(b>10))
+	end %soucet nesmi byt vic nez 40
+	if ((z==1)&&(b>20))
 		v = 0; 
-	end %pri odecitani nesmi byt b>10
-	if ((a==0)||(b==0)) 
-		v = 0; 
-	end %a nebo b nesmi byt 0
+	end %pri odecitani nesmi byt b>20
 
 	%pridani do seznamu
 	if (v==1)
