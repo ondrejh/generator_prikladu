@@ -164,7 +164,7 @@ class app:
             if self.priklad in self.priklady:
                 continue
             break
-        self.zacatek = time.clock()
+        self.zacatek = time.perf_counter()
         self.pokusy = []
 
         self.aLabel.config(text=self.priklad.split(' ')[0])
@@ -213,8 +213,8 @@ class app:
             file.write('Bodů;{}/{}\n\n'.format(self.body,max_bodu))
             file.write('příklad;čas;pokusy\n\n')
             for i in range(len(self.priklady)):
-                file.write('{};{};{}'.format(self.priklady[i],
-                                             round(self.casy[i]),
+                file.write('{};{:0.1f};{}'.format(self.priklady[i],
+                                             self.casy[i],
                                              self.chyby[i][0]))
                 for c in self.chyby[i][1:]:
                     file.write(',{}'.format(c))
@@ -237,7 +237,7 @@ class app:
         if result == spocitej_priklad(self.priklad):
             self.priklady.append(self.priklad)
             self.chyby.append(self.pokusy)
-            self.casy.append(time.clock()-self.zacatek)
+            self.casy.append(time.perf_counter()-self.zacatek)
             body = 5
             if self.casy[-1]>cas_na_priklad:
                 body -= 2
