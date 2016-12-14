@@ -2,6 +2,7 @@
 
 from tkinter import *
 from tkinter.ttk import *
+import pygame
 import random
 import time
 import os
@@ -52,6 +53,12 @@ class app:
         self.root = master
         self.root.title('Počítání do {}'.format(pocitani_max))
         self.root.protocol("WM_DELETE_WINDOW",self.save_result)
+
+        pygame.mixer.init()
+        self.sndNew = pygame.mixer.Sound("zvuky/pikon.ogg")
+        self.sndSuccess = pygame.mixer.Sound("zvuky/tyarari.ogg")
+        self.sndFail = pygame.mixer.Sound("zvuky/piano.ogg")
+
         self.create_form()
         
     def create_form(self):
@@ -134,12 +141,15 @@ class app:
         self.countLabel.config(text='{}\n{} bod{}'.format('Správně' if body!=5 else 'Výborně',
                                                           body,
                                                           'ů' if body>3 else ('' if body<2 else 'y')))
+        self.sndSuccess.play()
 
     def info_unhappy(self):
 
         self.smajLLabel.config(image=self.smaj3)
         self.smajRLabel.config(image=self.smaj3)
         self.countLabel.config(text='Špatně')
+
+        self.sndFail.play()
 
     def info_done(self):
 
@@ -179,6 +189,8 @@ class app:
         self.result_svar.set('')
         self.rEntry.config(state=NORMAL)
         self.rEntry.focus_set()
+
+        self.sndNew.play()
 
     def try_again(self):
 
