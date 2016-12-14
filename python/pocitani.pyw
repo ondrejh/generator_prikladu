@@ -99,6 +99,7 @@ class app:
                             font=ex_font,width=5)
         self.rEntry.pack(side=LEFT)
         self.rEntry.bind('<Return>',self.check_example)
+        self.rEntry.bind('<KP_Enter>',self.check_example)
 
         #ramec vysledku
         self.resFrm = Frame(self.mainFrm,padding='0 0 0 0')
