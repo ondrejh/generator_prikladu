@@ -33,7 +33,7 @@ class app:
         for i in range(self.examples):
             line = f.readline().strip().split(';')
             self.priklady.append(line[0])
-            self.casy.append(int(line[1]))
+            self.casy.append(float(line[1]))
             self.pokusy.append([])
             pokusy = line[2].split(',')
             for pokus in pokusy:
@@ -53,5 +53,5 @@ class app:
 if __name__ == "__main__":
 
     root = Tk()
-    gui = app(root,"vysledky/1214_1545.csv")
+    gui = app(root,"vysledky/1214_2154.csv")
     root.mainloop()
